@@ -170,7 +170,6 @@ public class GUI {
             for (int j=0; j< dim; j++){
                 ruter[i][j] = new JLabel(" ",SwingConstants.CENTER);
                 JLabel rute = ruter[i][j];
-                //rute.setBorder(BorderFactory.createLineBorder(Color.BLACK));
                 rute.setPreferredSize(new Dimension(30,30));
                 spillPanel.add(ruter[i][j]);
             }
@@ -273,26 +272,6 @@ public class GUI {
         rute.setIcon(kropp);
     }
 
-    /*public void tegnPaaBrett(String symbol, int lengde, int bredde){
-        
-        if (symbol.equals("p")){
-            JLabel rute = ruter[lengde][bredde];
-
-            Image img = premie.getImage();
-            Image newImg = img.getScaledInstance(20, 20,  java.awt.Image.SCALE_SMOOTH);
-            premie = new ImageIcon(newImg);
-
-            rute.setIcon(premie);
-            //rute.setText("$");
-            //rute.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
-        }
-        else{
-            ruter[lengde][bredde].setBackground(Color.YELLOW);
-            ruter[lengde][bredde].setOpaque(true);
-            ruter[lengde][bredde].setText(" ");
-        }
-    }*/
-
     public void fjernPremie(int lengde, int bredde){
         ruter[lengde][bredde].setIcon(null);
         ruter[lengde][bredde].setBackground(new Color(204,255,229));
@@ -311,31 +290,19 @@ public class GUI {
         ruter[lengde][bredde].setOpaque(true);
     }
 
-    /* 
-    public void fjernFraBrett(int lengde, int bredde, String symbol){
-        //ruter[lengde][bredde].setText(" ");
-        ruter[lengde][bredde].setBackground(new Color(204,255,229));
-        ruter[lengde][bredde].setOpaque(true);
-
-    }*/
-
     public void leggTilPoeng(int p){
         poeng.setText("Poeng: " + p);
     }
 
     public void vinner(){
-        //JPanel vinnerPanel = new JPanel();
-        //vinnerPanel.setLayout(new BorderLayout());
 
         JLabel vinnerTxt = new JLabel("GRATULERER! Du VANT!!", SwingConstants.CENTER);
         vinnerTxt.setForeground(Color.BLACK);
         vinnerTxt.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 20));
 
         panel.add(vinnerTxt, BorderLayout.CENTER);
-        //vinnerPanel.setBackground(Color.BLACK);
 
         panel.remove(spillPanel);
-        //panel.add(vinnerPanel, BorderLayout.CENTER);
         vindu.validate();
     }
 
