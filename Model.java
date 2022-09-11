@@ -4,8 +4,6 @@ public class Model {
     private int dim, posLengde, posBredde;
     private Controller c;
     public String[][] brett;
-    //private Premier[] premier = new Premier[10];
-    //private LinkedList<String> slange = new LinkedList<>();
     public String slangeHode = "h"; //"😎";
     public String slangeKropp = "k"; //🟡;
     public String premie = "p"; //"🍎";
@@ -35,7 +33,7 @@ public class Model {
         if (Retning.VEST == retning) midPosBredde--;
         if (Retning.OST == retning) midPosBredde++;
 
-        if (erVegg(midPosLengde, midPosBredde) || erSlange(midPosLengde, midPosBredde)){ //TODO: erSlange
+        if (erVegg(midPosLengde, midPosBredde) || erSlange(midPosLengde, midPosBredde)){ 
             c.sluttTaper();
         }
         else if(antPremierPaaBrettet <= 0) c.sluttVinner();
@@ -46,7 +44,6 @@ public class Model {
         posLengde = dim/2;
         posBredde = dim/2;
         tegn(slangeHode, posLengde, posBredde);
-        //slange.add("s");
     }
 
     public void plasserPremier(){
@@ -78,7 +75,6 @@ public class Model {
 
     public boolean erSlange(int lengde, int bredde){
         return brett[lengde][bredde].equals("s"); 
-        //TODO: sjekk denne
     }
 
     private void besokRute(int nyPosLengde, int nyPosBredde, Retning retning){
@@ -89,15 +85,14 @@ public class Model {
         tegn(slangeKropp, posLengde, posBredde);
 
         if (tmp.equals(premie)){
-            antPremierTatt++; //TODO: tegn i gui??
+            antPremierTatt++;
             gui.leggTilPoeng(antPremierTatt);
             antPremierPaaBrettet--;
         }
 
         else {
-            //må fjerne bakerste slange-rute
             int[][] sjekket = new int[dim][dim]; //liste for å markere sjekkede ruter, denne er kun her fordi det ellers ga feilmelding
-            finnOgFjernSisteSlangeRute(posLengde, posBredde, retning, sjekket); //TODO: Sjekk denne!
+            finnOgFjernSisteSlangeRute(posLengde, posBredde, retning, sjekket);
         }
         
         posLengde = nyPosLengde;
@@ -108,7 +103,7 @@ public class Model {
         if(symbol.equals(premie)) {
             brett[posLengde][posBredde] = premie; 
             gui.tegnPremie(posLengde, posBredde);
-        }   //TODO sjekk denne
+        } 
 
         if(symbol.equals(slangeHode)) {
             brett[posLengde][posBredde] = "s"; 
@@ -124,7 +119,7 @@ public class Model {
     private void fjern(int posLengde, int posBredde, String symbol){
         if(symbol.equals(premie)) {
             gui.fjernPremie(posLengde, posBredde);
-        }   //TODO sjekk denne
+        }
 
         if(symbol.equals(slangeHode)) {
             gui.fjernHode(posLengde, posBredde);
